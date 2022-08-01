@@ -10,7 +10,7 @@ const ToDoItems = ({
   const handleComplete = ({ id }) => {
     setToDoItem(
       toDoItem.map((item) => {
-        if (item.id === toDoItem.id) {
+        if (item.id === id) {
           return { ...item, completed: !item.completed };
         }
         return item;
@@ -35,7 +35,8 @@ const ToDoItems = ({
             <input
               type="text"
               value={toDoItem.title}
-              className="list"
+              className={`list ${toDoItem.completed ? "stk" : ""}`}
+              disabled
               // onChange={(event) => event.preventDefault()}
             />
             <button
