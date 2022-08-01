@@ -5,16 +5,16 @@ import "./form.css";
 const Form = ({
   textInput,
   setTextInput,
-  toDoItem,
-  setToDoItem,
+  toDoItems,
+  setToDoItems,
   editToDoItem,
   setEditToDoItem,
 }) => {
   const updateToDoItem = (id, title, completed) => {
-    const newToDoItem = toDoItem.map((toDoItem) =>
-      toDoItem.id === id ? (id, title, completed) : toDoItem
+    const newToDoItem = toDoItems.map((toDoItem) =>
+      toDoItem.id === id ? { id, title, completed } : toDoItem
     );
-    setToDoItem(newToDoItem);
+    setToDoItems(newToDoItem);
     setEditToDoItem("");
   };
 
@@ -34,15 +34,14 @@ const Form = ({
     event.preventDefault();
 
     if (!editToDoItem) {
-      setToDoItem([
-        ...toDoItem,
+      setToDoItems([
+        ...toDoItems,
         { id: uuidv4(), title: textInput, completed: false },
       ]);
+      setTextInput("");
     } else {
       updateToDoItem(editToDoItem.id, textInput, editToDoItem.completed);
     }
-
-    setTextInput("");
   };
   return (
     <>

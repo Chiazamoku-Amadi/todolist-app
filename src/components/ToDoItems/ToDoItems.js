@@ -1,15 +1,10 @@
 import React from "react";
 import "./toDoItems.css";
 
-const ToDoItems = ({
-  toDoItem,
-  setToDoItem,
-  editToDoItem,
-  setEditToDoItem,
-}) => {
+const ToDoItems = ({ toDoItems, setToDoItems, setEditToDoItem }) => {
   const handleComplete = ({ id }) => {
-    setToDoItem(
-      toDoItem.map((item) => {
+    setToDoItems(
+      toDoItems.map((item) => {
         if (item.id === id) {
           return { ...item, completed: !item.completed };
         }
@@ -19,18 +14,18 @@ const ToDoItems = ({
   };
 
   const handleEdit = ({ id }) => {
-    const findToDoItem = toDoItem.find((toDoItem) => toDoItem.id === id);
+    const findToDoItem = toDoItems.find((toDoItem) => toDoItem.id === id);
     setEditToDoItem(findToDoItem);
   };
 
   const handleDelete = ({ id }) => {
-    setToDoItem(toDoItem.filter((toDoItem) => toDoItem.id !== id));
+    setToDoItems(toDoItems.filter((toDoItem) => toDoItem.id !== id));
   };
 
   return (
     <>
       <div>
-        {toDoItem.map((toDoItem) => (
+        {toDoItems.map((toDoItem) => (
           <li className="item" key={toDoItem.id}>
             <input
               type="text"

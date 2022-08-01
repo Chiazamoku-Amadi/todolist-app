@@ -6,8 +6,8 @@ import ToDoItems from "./components/ToDoItems/ToDoItems";
 
 const App = () => {
   const [textInput, setTextInput] = useState("");
-  const [toDoItem, setToDoItem] = useState([]);
-  const [editToDoItem, setEditToDoItem] = useState([]);
+  const [toDoItems, setToDoItems] = useState([]);
+  const [editToDoItem, setEditToDoItem] = useState(null);
 
   return (
     <div className="App">
@@ -18,15 +18,16 @@ const App = () => {
         <Form
           textInput={textInput}
           setTextInput={setTextInput}
-          toDoItem={toDoItem}
-          setToDoItem={setToDoItem}
+          toDoItems={toDoItems}
+          setToDoItems={setToDoItems}
+          editToDoItem={editToDoItem}
+          setEditToDoItem={setEditToDoItem}
         />
       </div>
       <div>
         <ToDoItems
-          toDoItem={toDoItem}
-          setToDoItem={setToDoItem}
-          editToDoItem={editToDoItem}
+          toDoItems={toDoItems}
+          setToDoItems={setToDoItems}
           setEditToDoItem={setEditToDoItem}
         />
       </div>
